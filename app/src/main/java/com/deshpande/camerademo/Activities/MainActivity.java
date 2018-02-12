@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -20,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -33,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView call, image;
+    LinearLayout call, image;
     private static String logtag = "cameraapp";
 //    private static int take_picture = 1;
  Uri imageUri;
@@ -47,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove notification bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         //cALL NUMBER
-        call = (ImageView) findViewById(R.id.call);
+        call = (LinearLayout) findViewById(R.id.call);
 //        done = (Button) findViewById(R.id.done);
 //        done.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -64,48 +66,58 @@ public class MainActivity extends AppCompatActivity {
 //        });
         call.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
+                if(Build.VERSION.SDK_INT >= 23)
+                {
 
 ////                    if (ActivityCompat.checkSelfPermission(MainActivity.this,
 ////                            Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 ////                        return;
 ////                    }
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Callstart();
+
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                                Manifest.permission.CALL_PHONE)) {
+                            // Show an explanation to the user *asynchronously* -- don't block
+                            // this thread waiting for the user's response! After the user
+                            // sees the explanation, try again to request the permission.
+
+                        } else {
+
+                            // No explanation needed, we can request the permission.
+
+                            ActivityCompat.requestPermissions(MainActivity.this,
+                                    new String[]{Manifest.permission.CALL_PHONE},
+                                    3);
+
+                            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                            // app-defined int constant. The callback method gets the
+                            // result of the request.
+                        }
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+
+                    }
+
                     Callstart();
 
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                            Manifest.permission.CALL_PHONE)) {
-                        // Show an explanation to the user *asynchronously* -- don't block
-                        // this thread waiting for the user's response! After the user
-                        // sees the explanation, try again to request the permission.
+                    //only api 21 above
+                }else{
+                        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "03237588821", null));
+                        startActivity(callIntent);
+                    //only api 21 down
+                }
 
-                    } else {
-
-                        // No explanation needed, we can request the permission.
-
-                        ActivityCompat.requestPermissions(MainActivity.this,
-                                new String[]{Manifest.permission.CALL_PHONE},
-                                3);
-
-                        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                        // app-defined int constant. The callback method gets the
-                        // result of the request.
-                    }
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-
-              }
-
-                Callstart();
             }
         });
 
 
-        image = (ImageView) findViewById(R.id.image);
+        image = (LinearLayout) findViewById(R.id.image);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +185,7 @@ startActivity(intent);
 
     private void Callstart() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:03216033794"));
+        callIntent.setData(Uri.parse("tel:03232030440"));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -251,7 +263,6 @@ startActivity(intent);
     {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         file = Uri.fromFile(getOutputMediaFile());
-
         intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
         startActivityForResult(intent, 100);
     }
@@ -262,7 +273,6 @@ startActivity(intent);
 
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
-                image.setImageURI(file);
                 try {
                     photo = MediaStore.Images.Media.getBitmap(MainActivity.this.getContentResolver(), file);
                     SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(Config.SHARE_PREFRANCE_NAME, Context.MODE_PRIVATE);
@@ -311,23 +321,9 @@ private static File getOutputMediaFile(){
     return new File(mediaStorageDir.getPath() + File.separator +
             "IMG_"+ timeStamp + ".jpg");
 }
-
-    private void askForPermission(String permission, Integer requestCode) {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, permission)) {
-
-                //This is called if user has denied the permission before
-                //In this case I am just asking the permission again
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission}, requestCode);
-
-            } else {
-
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission}, requestCode);
-            }
-        } else {
-            Toast.makeText(this, "" + permission + " is already granted.", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onBackPressed() {
+    MainActivity.this.finish();
+    System.exit(0);
     }
 }

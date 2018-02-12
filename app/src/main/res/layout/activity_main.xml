@@ -1,134 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
     tools:context="com.deshpande.camerademo.Activities.MainActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="2"
-        android:padding="8dp"
         android:orientation="vertical">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="15dp"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/call"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/secong_back" />
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="80dp"
-                        android:layout_height="100dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="24dp"
-                        android:background="@drawable/call" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/imageView"
-                        android:layout_centerHorizontal="true"
-                        android:text="Call Us"
-                        android:textColor="@color/white"
-                        android:textSize="38sp"
-                        android:id="@+id/textView" />
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:gravity="start"
-                        android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/textView"
-                        android:layout_alignStart="@+id/textView"
-                        android:layout_below="@+id/textView"
-                        android:text="For Assistance"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-                </RelativeLayout>
-
-
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView"
-            android:layout_marginTop="29dp"
-            android:layout_weight="1">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-100dp">
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:background="@color/Dvago_Green" />
+
+            <ImageView
+                android:layout_width="220dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@drawable/logo_white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/whit_back_color"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/call"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/transback"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="CALL US"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/imageView"
+                        android:text="For Assistance"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/phone_black" />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/secong_back" />
-                <RelativeLayout
+                android:padding="10dp"
+                android:background="@drawable/transback"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="80dp"
-                        android:layout_height="120dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="24dp"
-                        android:background="@drawable/presc" />
+                    android:layout_marginRight="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/imageView2"
-                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:gravity="start"
                         android:text="UPLOAD"
-                        android:textColor="@color/white"
-                        android:textSize="38sp"
-                        android:id="@+id/upload" />
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
 
                     <TextView
-                        android:layout_width="200dp"
-                        android:gravity="start"
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/upload"
-                        android:layout_alignStart="@+id/upload"
-                        android:layout_below="@+id/upload"
+                        android:layout_below="@+id/textView4"
+                        android:gravity="start"
+                        android:padding="2dp"
                         android:text="Prescription Only"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-                </RelativeLayout>
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+                </LinearLayout>
 
-
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="80dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/pres_black" />
+            </LinearLayout>
         </LinearLayout>
-        <!--<Button-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:text="Proceed"-->
-            <!--android:id="@+id/done"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:background="@color/black"/>-->
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

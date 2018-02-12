@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#75bc1c</color>
     <color name="green">#43b41f</color>
     <color name="white">#FFFFFF</color>
     <color name="monsoon">#777777</color>
@@ -25,4 +25,5 @@
     <color name="wed_back_black">#b1020202</color>
     <color name="LightGrey">#E6E6FA</color>
     <color name="black_overlay">#66000000</color>
+    <color name="Dvago_Green">#75bd1c</color>
 </resources>

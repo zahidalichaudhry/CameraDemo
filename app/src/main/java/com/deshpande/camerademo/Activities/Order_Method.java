@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order_Method extends AppCompatActivity {
-    ImageView home,pick;
+    RelativeLayout home,pick;
     private ProgressDialog loading;
     Bitmap bitmap;
     String image;
@@ -39,16 +40,17 @@ public class Order_Method extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order__method);
-        home=(ImageView)findViewById(R.id.home);
+        home=(RelativeLayout)findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Order_Method.this,Delivery_Data.class);
 //                intent.putExtra("BitmapImage", bitmap);
+                finish();
                 startActivity(intent);
             }
         });
-        pick=(ImageView)findViewById(R.id.pic);
+        pick=(RelativeLayout)findViewById(R.id.pic);
 //        Intent intent=getIntent();
 //        bitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARE_PREFRANCE_NAME, Context.MODE_PRIVATE);
@@ -78,6 +80,7 @@ public class Order_Method extends AppCompatActivity {
                     loading.dismiss();
                     Intent intent = new Intent(Order_Method.this, Adress.class);
                     intent.putExtra("ID",response);
+                    finish();
                     startActivity(intent);
 //                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
@@ -150,5 +153,11 @@ public class Order_Method extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte[] imgBytes=byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Order_Method.this,MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

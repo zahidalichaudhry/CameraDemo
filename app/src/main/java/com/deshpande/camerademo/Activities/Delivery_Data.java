@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
@@ -43,9 +44,9 @@ public class Delivery_Data extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove notification bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_delivery__data);
         done=(Button)findViewById(R.id.done);
         name=(EditText)findViewById(R.id.name);
@@ -55,14 +56,27 @@ public class Delivery_Data extends AppCompatActivity {
 //        bitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARE_PREFRANCE_NAME, Context.MODE_PRIVATE);
         image= sharedPreferences.getString(Config.DIS, null);
-        bitmap=decodeBase64(image);
-
-
+//        bitmap=decodeBase64(image);
         done.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                if (name.getText().length()==0) {
+                    name.requestFocus();
+                    name.setError(Html.fromHtml("<font color='red'>Please Enter Your Name</font>"));
+                }else
+                if (number.getText().length()==0) {
+                    number.requestFocus();
+                    number.setError(Html.fromHtml("<font color='red'>Please Enter Your Number</font>"));
+                }else
+                if (address.getText().length()==0) {
+                    address.requestFocus();
+                    address.setError(Html.fromHtml("<font color='red'>Please Enter Your Address</font>"));
+                }
+                else if (v==done)
+                {
                 Upload_details();
+            }
             }
         });
     }
@@ -86,6 +100,7 @@ public class Delivery_Data extends AppCompatActivity {
 
                 Intent intent = new Intent(Delivery_Data.this, Thank_You.class);
                 intent.putExtra("ID",response);
+                finish();
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {
@@ -105,7 +120,7 @@ public class Delivery_Data extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put(Config.Image,imageToStrin(bitmap));//ecodedString
+                params.put(Config.Image,image );//ecodedString
                 params.put(Config.Name,na);
                 params.put(Config.Address,add);
                 params.put(Config.Phone,num);
@@ -124,12 +139,12 @@ public class Delivery_Data extends AppCompatActivity {
 
     }
 //
-    public static Bitmap decodeBase64(String input)
-    {
-        byte[] decodedByte = Base64.decode(input, 0);
-        return BitmapFactory
-                .decodeByteArray(decodedByte, 0, decodedByte.length);
-    }
+//    public static Bitmap decodeBase64(String input)
+//    {
+//        byte[] decodedByte = Base64.decode(input, 0);
+//        return BitmapFactory
+//                .decodeByteArray(decodedByte, 0, decodedByte.length);
+//    }
 private String imageToStrin(Bitmap bitmap)
 {
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -137,6 +152,12 @@ private String imageToStrin(Bitmap bitmap)
     byte[] imgBytes=byteArrayOutputStream.toByteArray();
     return Base64.encodeToString(imgBytes, Base64.DEFAULT);
 }
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Delivery_Data.this,MainActivity.class);
+        finish();
+        startActivity(intent);
+    }
 }
 
 

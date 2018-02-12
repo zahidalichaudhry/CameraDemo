@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -47,19 +48,26 @@ public class Full_Screen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove notification bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_full__screen);
         full=(ImageView)findViewById(R.id.full_image);
-        next=(Button)findViewById(R.id.next);
-        ActivityCompat.requestPermissions(Full_Screen.this, new String[] { Manifest.permission.CAMERA,
-                WRITE_EXTERNAL_STORAGE }, 0);
+        next=(Button)findViewById(R.id.proceed);
+        if(Build.VERSION.SDK_INT >= 23) {
+
+            ActivityCompat.requestPermissions(Full_Screen.this, new String[]{Manifest.permission.CAMERA,
+                    WRITE_EXTERNAL_STORAGE}, 0);
+        }else
+            {
+                takePicture();
+            }
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 Intent intent1 =new Intent(Full_Screen.this,Order_Method.class);
+                finish();
                 startActivity(intent1);
 
             }
@@ -78,6 +86,7 @@ public class Full_Screen extends AppCompatActivity {
         file = Uri.fromFile(getOutputMediaFile());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
         startActivityForResult(intent, 100);
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -94,10 +103,17 @@ public class Full_Screen extends AppCompatActivity {
                     editor.putString(Config.DIS, encodeTobase64(photo));
 //                    full.setImageBitmap(bitmap);
                     editor.commit();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+            else
+                {
+                    Intent intent =new Intent(Full_Screen.this,MainActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
         }
 
     }
@@ -136,5 +152,11 @@ public class Full_Screen extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         return new File(mediaStorageDir.getPath() + File.separator +
                 "IMG_"+ timeStamp + ".jpg");
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Full_Screen.this,MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

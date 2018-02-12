@@ -19,9 +19,9 @@ public class Thank_You extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove notification bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_thank__you);
         Intent intent=getIntent();
        String Id= intent.getStringExtra("ID");
@@ -36,5 +36,12 @@ public class Thank_You extends AppCompatActivity {
         //Saving the sharedpreferences
         editor.clear();
         editor.apply();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Thank_You.this,MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

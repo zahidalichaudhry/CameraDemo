@@ -21,9 +21,9 @@ public class Adress extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove notification bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_adress);
         proceed=(Button)findViewById(R.id.proceed);
         johar=(ImageView)findViewById(R.id.johar);
@@ -37,15 +37,15 @@ public class Adress extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(Adress.this,Thank_You.class);
                 intent.putExtra("ID",Id);
+                finish();
                 startActivity(intent);
             }
         });
         johar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/place/Lahore+University+of+Management+Sciences/@31.470436,74.4085973,17z/data=!3m1!4b1!4m5!3m4!1s0x391908a610715697:0xa58f8e89d5669a0e!8m2!3d31.470436!4d74.410786");
+                Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/place/24%C2%B055'11.2%22N+67%C2%B008'02.9%22E/@24.9200859,67.1342514,19z/data=!4m5!3m4!1s0x0:0x0!8m2!3d24.919771!4d67.134125");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 }
@@ -73,5 +73,11 @@ public class Adress extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Adress.this,MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

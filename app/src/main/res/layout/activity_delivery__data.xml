@@ -1,189 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/full_back1"
+    android:orientation="vertical"
     tools:context="com.deshpande.camerademo.Activities.Delivery_Data">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="66dp"
-        android:background="@drawable/logo_white" />
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:background="@drawable/white_back"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:id="@+id/linearLayout">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:weightSum="2"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp"
-                android:padding="8dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="Your Name"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/line"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:textColorHint="@color/grey" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:padding="8dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:text="Phone No"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-                <!--<EditText-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_margin="8dp"-->
-                <!--android:hint="Name"-->
-                <!--android:maxLines="1"-->
-                <!--android:id="@+id/name"-->
-                <!--android:gravity="center"-->
-                <!--android:textColorHint="@color/grey"-->
-                <!--android:background="@drawable/detail_back"-->
-                <!--android:layout_height="50dp" />-->
-
-                <EditText
-                    android:id="@+id/number"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/line"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textColorHint="@color/grey" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Delivery Address"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/line_three2"
-            android:maxLines="3"
-            android:textColorHint="@color/grey" />
-        <RelativeLayout
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:background="@color/Dvago_Green" />
 
-            <Button
-                android:id="@+id/done"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/logo_white" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-80dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:background="@drawable/next_black"
-                android:textColor="@color/white" />
-        </RelativeLayout>
+                android:background="@drawable/whit_back_color"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:id="@+id/linearLayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10dp"
+                        android:padding="8dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text="Your Name"
+                            android:textSize="18dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/transback"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"
+                            android:layout_marginTop="10dp"
+                            android:hint="Name"
+                            android:gravity="center"
+                            android:textColorHint="@color/greyshade" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center"
+                            android:text="Phone No"
+                            android:textSize="18dp"
+                            android:textColor="@color/black" />
+                        <!--<EditText-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_margin="8dp"-->
+                        <!--android:hint="Name"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:id="@+id/name"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColorHint="@color/grey"-->
+                        <!--android:background="@drawable/detail_back"-->
+                        <!--android:layout_height="50dp" />-->
+
+                        <EditText
+                            android:id="@+id/number"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/transback"
+                            android:inputType="number"
+                            android:hint="Number"
+                            android:maxLines="1"
+                            android:gravity="center"
+                            android:textColorHint="@color/greyshade" />
+                    </LinearLayout>
+                </LinearLayout>
 
 
-        <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:textColorHint="@color/grey"-->
-        <!--android:layout_marginRight="8dp"-->
-        <!--android:layout_marginLeft="8dp"-->
-        <!--android:hint="Number"-->
-        <!--android:gravity="center"-->
-        <!--android:id="@+id/number"-->
-        <!--android:maxLines="1"-->
-        <!--android:background="@drawable/detail_back"-->
-        <!--android:layout_height="50dp" />-->
-    </LinearLayout>
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:orientation="vertical"-->
-        <!--android:background="@color/grey"-->
-        <!--android:padding="10dp"-->
-        <!--android:layout_height="wrap_content">-->
 
-        <!--&lt;!&ndash;&ndash;&gt;-->
-        <!--&lt;!&ndash;<EditText&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_marginRight="8dp"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_marginLeft="8dp"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:textColorHint="@color/grey"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:hint="Address"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:maxLines="1"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="80dp"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/address"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:background="@drawable/detail_back_addres"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_margin="10dp"/>&ndash;&gt;-->
-        <!--<Button-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Proceed"-->
-            <!--android:id="@+id/done"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:background="@color/green"-->
-            <!--/>-->
-    <!--</LinearLayout>-->
-</LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="Delivery Address"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+
+                <EditText
+                    android:id="@+id/address"
+                    android:textColorHint="@color/greyshade"
+                    android:hint="Address"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="start"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="10dp"
+                    android:background="@drawable/transback"
+                    android:layout_marginTop="20dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <Button
+                        android:id="@+id/done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="50dp"
+                        android:layout_gravity="center"
+                        android:textSize="32sp"
+                        android:text="NEXT"
+                        android:background="@drawable/transback_total"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </LinearLayout>
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+                <!--<ImageView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="-35dp"-->
+                    <!--android:background="@drawable/arrow_green"/>-->
+                <!--<ImageView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:background="@drawable/white_back"/>-->
+            <!--</RelativeLayout>-->
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
